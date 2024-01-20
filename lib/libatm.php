@@ -88,7 +88,8 @@ class ATM_Collection {
 
   function first() {
 
-    return array_shift( array_values( $this->collection ) );
+    $tmp = array_values( $this->collection );
+    return array_shift( $tmp );
   }
 
   function delete( $name ) {
@@ -515,6 +516,7 @@ class ATM_Machine {
        }
     } else {
       // Extract the machine name
+      if ($data->machine[$idx]==null) return $this;
       $this->name = (string) $data->machine[$idx]['name'];
       if ( !$this->name ) return $this;
       // Extract the state names
